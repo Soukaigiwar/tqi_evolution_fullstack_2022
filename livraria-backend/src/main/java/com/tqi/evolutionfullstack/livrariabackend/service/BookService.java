@@ -17,7 +17,7 @@ public class BookService {
         book.setAuthor(newBook.getAuthor());
         book.setPublisher(newBook.getPublisher());
         book.setImg(newBook.getImg());
-        book.setPublishedDate(book.getPublishedDate());
+        book.setPublishedYear(newBook.getPublishedYear());
 
         repository.save(book);
     }

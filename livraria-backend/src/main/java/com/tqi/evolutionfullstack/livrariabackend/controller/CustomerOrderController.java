@@ -21,5 +21,5 @@ public class CustomerOrderController {
     @GetMapping
     public List<CustomerOrder> findAll() { return repository.findAll(); }
     @PostMapping
-    public void save(@RequestBody NewCustomerOrder newOrder) { service.save(newOrder);}
+    public void save(@RequestBody NewCustomerOrder order) { service.save(order);}
 }

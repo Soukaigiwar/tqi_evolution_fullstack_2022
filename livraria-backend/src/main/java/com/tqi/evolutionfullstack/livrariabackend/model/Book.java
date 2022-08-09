@@ -18,7 +18,7 @@ public class Book {
     @Column(length = 255)
     private String  img;
     @Column
-    private Date publishedDate;
+    private Integer publishedYear;
 
     public String getTitle() {
         return title;
@@ -52,11 +52,11 @@ public class Book {
         this.img = img;
     }
 
-    public Date getPublishedDate() {
-        return publishedDate;
+    public Integer getPublishedYear() {
+        return publishedYear;
     }
 
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
+    public void setPublishedYear(Integer publishedYear) {
+        this.publishedYear = publishedYear;
     }
 }

@@ -13,8 +13,11 @@ public class CustomerService {
 
     public void save(NewCustomer newCustomer) {
         Customer customer = new Customer();
-        customer.setCpf(newCustomer.getCpf());
-        customer.setName(newCustomer.getNome());
+//        customer.setCpf(newCustomer.getCpf());
+//        customer.setName(newCustomer.getName());
+        customer.setCustomerId(0L);
+        customer.setCpf("1234");
+        customer.setName("Sergio");
 
 //        Conta conta = new Conta();
 //        conta.setSaldo(0.0);

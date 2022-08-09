@@ -14,7 +14,11 @@ public class CustomerOrderService {
 
     public void save(NewCustomerOrder newCustomerOrder) {
         CustomerOrder order = new CustomerOrder();
-        order.setBookId(order.getBookId());
+        order.setCustomerOrderId(newCustomerOrder.getCustomerOrderId());
+        order.setCustomerId(newCustomerOrder.getCustomerId());
+        order.setBookId(newCustomerOrder.getBookId());
+        order.setAmount(newCustomerOrder.getAmount());
+        order.setPrice(newCustomerOrder.getPrice());
 
         repository.save(order);
     }

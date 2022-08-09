@@ -3,13 +3,19 @@ package com.tqi.evolutionfullstack.livrariabackend.dto;
 import java.util.Date;
 
 public class NewBook {
-
+    private Long bookId;
     private String  title;
     private String  author;
     private String  publisher;
     private String  img;
-    private Date    publishedDate;
+    private Integer publishedYear;
 
+    public Long getBookId() {
+        return bookId;
+    }
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
     public String getTitle() {
         return title;
     }
@@ -42,11 +48,11 @@ public class NewBook {
         this.img = img;
     }
 
-    public Date getPublishedDate() {
-        return publishedDate;
+    public Integer getPublishedYear() {
+        return publishedYear;
     }
 
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
+    public void setPublishedYear(Integer publishedYear) {
+        this.publishedYear = publishedYear;
     }
 }

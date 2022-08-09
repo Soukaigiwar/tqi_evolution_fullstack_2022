@@ -7,37 +7,45 @@ import javax.persistence.*;
 public class CustomerOrder {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        private Integer	customerOrderId;
+        private Long	customerOrderId;
         @Column
-        private Integer	customerId;
+        private Long	customerId;
         @Column
-        private String bookId;
+        private Long    bookId;
         @Column
-        private String amount;
+        private Integer amount;
         @Column
-        private Double price;
+        private Double  price;
 
-        public Integer getCustomerId() {
+        public Long getCustomerOrderId() {
+                return customerOrderId;
+        }
+
+        public void setCustomerOrderId(Long customerOrderId) {
+                this.customerOrderId = customerOrderId;
+        }
+
+        public Long getCustomerId() {
                 return customerId;
         }
 
-        public void setCustomerId(Integer customerId) {
+        public void setCustomerId(Long customerId) {
                 this.customerId = customerId;
         }
 
-        public String getBookId() {
+        public Long getBookId() {
                 return bookId;
         }
 
-        public void setBookId(String bookId) {
+        public void setBookId(Long bookId) {
                 this.bookId = bookId;
         }
 
-        public String getAmount() {
+        public Integer getAmount() {
                 return amount;
         }
 
-        public void setAmount(String amount) {
+        public void setAmount(Integer amount) {
                 this.amount = amount;
         }
 
