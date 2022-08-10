@@ -11,7 +11,7 @@ public class Customer {
         @Column(length = 14)
         private String	cpf;
         @Column(length = 100)
-        private String name;
+        private String  name;
 
         public Long getCustomerId() {
                 return customerId;

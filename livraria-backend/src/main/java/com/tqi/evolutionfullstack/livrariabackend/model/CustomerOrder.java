@@ -3,7 +3,7 @@ package com.tqi.evolutionfullstack.livrariabackend.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tab_customer")
+@Table(name = "tab_customer_order")
 public class CustomerOrder {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
