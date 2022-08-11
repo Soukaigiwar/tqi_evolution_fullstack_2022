@@ -1,25 +1,28 @@
 package com.tqi.evolutionfullstack.livrariabackend.dto;
 
+import com.tqi.evolutionfullstack.livrariabackend.model.Customer;
+
 public class NewCustomerOrder {
-    private Long    customerOrderId;
-    private Long    customerId;
+    private Long id;
+
+    private Customer customerId;
     private Long    bookId;
     private Integer amount;
     private Double  price;
 
-    public Long getCustomerOrderId() {
-        return customerOrderId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerOrderId(Long customerOrderId) {
-        this.customerOrderId = customerOrderId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getCustomerId() {
+    public Customer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(Customer customerId) {
         this.customerId = customerId;
     }
 

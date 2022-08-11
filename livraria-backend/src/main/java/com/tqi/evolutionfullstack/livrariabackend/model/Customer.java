@@ -7,18 +7,20 @@ import javax.persistence.*;
 public class Customer {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long	customerId;
-        @Column(length = 14)
-        private String	cpf;
+        private Long id;
         @Column(length = 100)
         private String  name;
+        @Column(length = 14)
+        private String	cpf;
 
-        public Long getCustomerId() {
-                return customerId;
+        public Customer() { }
+        public Customer(String name, String cpf) {
+                this.name = name;
+                this.cpf = cpf;
         }
 
-        public void setCustomerId(Long customerId) {
-                this.customerId = customerId;
+        public Long getId() {
+                return id;
         }
 
         public String getCpf() {
@@ -35,6 +37,11 @@ public class Customer {
 
         public void setName(String name) {
                 this.name = name;
+        }
+
+        @Override
+        public String toString() {
+                return "Customer [id=" + id + ", name=" + name + ", cpf=" + cpf + "]";
         }
 
         //        public Order getOrder() {

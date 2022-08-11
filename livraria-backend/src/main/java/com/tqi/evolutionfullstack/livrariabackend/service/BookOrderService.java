@@ -13,11 +13,11 @@ public class BookOrderService {
     private BookOrderRepository repository;
 
     public void save(NewBookOrder newBookOrder){
-        BookOrder book = new BookOrder();
-        book.setBookId(newBookOrder.getBookId());
-        book.setAmount(newBookOrder.getAmount());
-        book.setPrice(newBookOrder.getPrice());
+        BookOrder bookOrder = new BookOrder();
+        bookOrder.setBookId(newBookOrder.getBookId());
+        bookOrder.setAmount(newBookOrder.getAmount());
+        bookOrder.setPrice(newBookOrder.getPrice());
 
-        repository.save(book);
+        repository.save(bookOrder);
     }
 }

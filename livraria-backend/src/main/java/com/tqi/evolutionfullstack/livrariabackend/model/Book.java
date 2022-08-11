@@ -1,14 +1,13 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "tab_book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bookId;
+    private Long id;
     @Column(length = 50)
     private String title;
     @Column(length = 50)
@@ -19,6 +18,14 @@ public class Book {
     private String  img;
     @Column
     private Integer publishedYear;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

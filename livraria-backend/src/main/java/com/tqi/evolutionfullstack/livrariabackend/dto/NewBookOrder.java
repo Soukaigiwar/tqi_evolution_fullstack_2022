@@ -2,15 +2,25 @@ package com.tqi.evolutionfullstack.livrariabackend.dto;
 
 public class NewBookOrder {
 
-    private Integer bookId;
+    private Long id;
+
+    private Long bookId;
     private Integer amount;
     private Double price;
 
-    public Integer getBookId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
@@ -29,4 +39,5 @@ public class NewBookOrder {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }

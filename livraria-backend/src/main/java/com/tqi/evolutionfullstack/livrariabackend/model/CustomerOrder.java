@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class CustomerOrder {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long	customerOrderId;
+        private Long id;
         @Column
         private Long	customerId;
         @Column
@@ -17,12 +17,12 @@ public class CustomerOrder {
         @Column
         private Double  price;
 
-        public Long getCustomerOrderId() {
-                return customerOrderId;
+        public Long getId() {
+                return id;
         }
 
-        public void setCustomerOrderId(Long customerOrderId) {
-                this.customerOrderId = customerOrderId;
+        public void setId(Long id) {
+                this.id = id;
         }
 
         public Long getCustomerId() {

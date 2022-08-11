@@ -1,16 +1,16 @@
 package com.tqi.evolutionfullstack.livrariabackend.dto;
 
 public class NewCustomer {
-    private Long    customerId;
+    private Long id;
     private String	name;
     private String	cpf;
 
-    public Long getCustomerId() {
-        return customerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

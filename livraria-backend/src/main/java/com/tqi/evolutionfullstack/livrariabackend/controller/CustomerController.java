@@ -9,21 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("customer")
 public class CustomerController {
 
-        @Autowired
-        private CustomerRepository repository;
-        @Autowired
-        CustomerService service;
+    @Autowired
+    private CustomerRepository repository;
+    @Autowired
+    CustomerService service;
 
-        @GetMapping
-        public List<Customer> findAll(){
-            return repository.findAll();
-        }
-
-        @PostMapping
-        public void save(@RequestBody NewCustomer customer) {
-            service.save(customer);
-        }
+    @GetMapping
+    public List<Customer> findAll() {
+        return repository.findAll();
     }
+
+//    @PostMapping
+//    public void save(@RequestBody NewCustomer newCustomer) {
+//        Customer customer = (Customer) CustomerRepository.save(newCustomer);
+//    }
+
+    @PostMapping("/customer")
+    public void createCustomer(@RequestBody NewCustomer newCustomer) {
+        Customer customer = repository.save(new Customer(newCustomer.getName(), newCustomer.getCpf()));
+        customer.toString();
+    }
+}

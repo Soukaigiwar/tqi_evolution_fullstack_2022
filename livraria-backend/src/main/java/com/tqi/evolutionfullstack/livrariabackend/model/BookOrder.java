@@ -7,20 +7,21 @@ import javax.persistence.*;
 public class BookOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bookOrderId;
+    private Long id;
     @Column
-    private Integer bookId;
+    private Long bookId;
     @Column
     private Integer amount;
     @Column
     private Double price;
 
-    public Integer getBookId() {
-        return bookId;
+
+    public Long id() {
+        return id;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
     public Integer getAmount() {
@@ -37,5 +38,13 @@ public class BookOrder {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 }

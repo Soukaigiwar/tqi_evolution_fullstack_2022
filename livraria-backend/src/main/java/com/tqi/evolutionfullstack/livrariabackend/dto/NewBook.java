@@ -1,20 +1,18 @@
 package com.tqi.evolutionfullstack.livrariabackend.dto;
 
-import java.util.Date;
-
 public class NewBook {
-    private Long bookId;
+    private Long id;
     private String  title;
     private String  author;
     private String  publisher;
     private String  img;
     private Integer publishedYear;
 
-    public Long getBookId() {
-        return bookId;
+    public Long getId() {
+        return id;
     }
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getTitle() {
         return title;

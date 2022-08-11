@@ -20,7 +20,7 @@ public class BookController {
     @GetMapping
     public List<Book> findAll() { return repository.findAll();}
     @PostMapping
-    public void save(@RequestBody NewBook book) {
-        service.save(book);
+    public void save(@RequestBody NewBook newBook) {
+        service.save(newBook);
     }
 }

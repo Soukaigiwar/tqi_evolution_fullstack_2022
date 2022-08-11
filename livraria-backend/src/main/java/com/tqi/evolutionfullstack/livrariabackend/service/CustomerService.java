@@ -11,9 +11,13 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repository;
 
+    public CustomerService(CustomerRepository repository) {
+        this.repository = repository;
+    }
+
     public void save(NewCustomer newCustomer) {
         Customer customer = new Customer();
-
+        //customer.setId(0L);
         customer.setCpf(newCustomer.getCpf());
         customer.setName(newCustomer.getName());
 
