@@ -15,7 +15,7 @@ public class CustomerOrderService {
     public void save(NewCustomerOrder newCustomerOrder) {
         CustomerOrder order = new CustomerOrder();
         order.setId(newCustomerOrder.getId());
-        order.setCustomerId(newCustomerOrder.getId());
+        order.setCustomer(newCustomerOrder.getCustomerId());
         order.setBookId(newCustomerOrder.getBookId());
         order.setAmount(newCustomerOrder.getAmount());
         order.setPrice(newCustomerOrder.getPrice());

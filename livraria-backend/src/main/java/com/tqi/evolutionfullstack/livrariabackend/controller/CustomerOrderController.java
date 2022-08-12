@@ -14,12 +14,18 @@ import java.util.List;
 @RequestMapping("/customer_order")
 public class CustomerOrderController {
 
+    private final CustomerOrderRepository customerOrderRepository;
+
+    public CustomerOrderController(CustomerOrderRepository customerOrderRepository) {
+        this.customerOrderRepository = customerOrderRepository;
+    }
+
     @Autowired
     private CustomerOrderRepository repository;
     @Autowired
     CustomerOrderService service;
     @GetMapping
     public List<CustomerOrder> findAll() { return repository.findAll(); }
-    @PostMapping
+    @PostMapping("/{id}")
     public void save(@RequestBody NewCustomerOrder order) { service.save(order);}
 }

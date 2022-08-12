@@ -1,6 +1,8 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
 import javax.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "tab_customer_order")
@@ -8,8 +10,10 @@ public class CustomerOrder {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
-        @Column
-        private Long	customerId;
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "customerId", nullable = false)
+        private Customer customer;
         @Column
         private Long    bookId;
         @Column
@@ -25,12 +29,12 @@ public class CustomerOrder {
                 this.id = id;
         }
 
-        public Long getCustomerId() {
-                return customerId;
+        public Customer getCustomer() {
+                return customer;
         }
 
-        public void setCustomerId(Long customerId) {
-                this.customerId = customerId;
+        public void setCustomer(Customer customer) {
+                this.customer = customer;
         }
 
         public Long getBookId() {

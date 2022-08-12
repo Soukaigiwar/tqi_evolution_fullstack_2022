@@ -17,17 +17,21 @@ public class CustomerController {
     @Autowired
     CustomerService service;
 
+    @GetMapping("/{$id}")
+    public List<Customer> findById() {
+        return repository.findAll();
+    }
     @GetMapping
     public List<Customer> findAll() {
         return repository.findAll();
     }
 
-//    @PostMapping
+//    @PostMapping("/customer/{$id}")
 //    public void save(@RequestBody NewCustomer newCustomer) {
 //        Customer customer = (Customer) CustomerRepository.save(newCustomer);
 //    }
 
-    @PostMapping("/customer")
+    @PostMapping("/{$id}")
     public void createCustomer(@RequestBody NewCustomer newCustomer) {
         Customer customer = repository.save(new Customer(newCustomer.getName(), newCustomer.getCpf()));
         customer.toString();
