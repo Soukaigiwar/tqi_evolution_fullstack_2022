@@ -14,7 +14,7 @@ public class BookOrderService {
 
     public void save(NewBookOrder newBookOrder){
         BookOrder bookOrder = new BookOrder();
-        bookOrder.setBookId(newBookOrder.getBookId());
+        //bookOrder.setBookId(Iterable<book>));
         bookOrder.setAmount(newBookOrder.getAmount());
         bookOrder.setPrice(newBookOrder.getPrice());
 

@@ -5,7 +5,10 @@ import com.tqi.evolutionfullstack.livrariabackend.model.Customer;
 import com.tqi.evolutionfullstack.livrariabackend.repository.CustomerRepository;
 import com.tqi.evolutionfullstack.livrariabackend.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 
 @RestController
@@ -17,23 +20,24 @@ public class CustomerController {
     @Autowired
     CustomerService service;
 
-    @GetMapping("/{$id}")
-    public List<Customer> findById() {
-        return repository.findAll();
-    }
     @GetMapping
     public List<Customer> findAll() {
         return repository.findAll();
     }
 
-//    @PostMapping("/customer/{$id}")
-//    public void save(@RequestBody NewCustomer newCustomer) {
-//        Customer customer = (Customer) CustomerRepository.save(newCustomer);
-//    }
+    @GetMapping("/{id}")
+    public Customer findById(@PathVariable Long id) {
+        var customerOptional = repository.findById(id);
+        if (customerOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return customerOptional.get();
+    }
 
-    @PostMapping("/{$id}")
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public void createCustomer(@RequestBody NewCustomer newCustomer) {
         Customer customer = repository.save(new Customer(newCustomer.getName(), newCustomer.getCpf()));
-        customer.toString();
+
     }
 }
