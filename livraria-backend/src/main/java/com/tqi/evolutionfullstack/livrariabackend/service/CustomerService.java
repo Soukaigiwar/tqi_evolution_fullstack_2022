@@ -1,6 +1,5 @@
 package com.tqi.evolutionfullstack.livrariabackend.service;
 
-import com.tqi.evolutionfullstack.livrariabackend.dto.NewCustomer;
 import com.tqi.evolutionfullstack.livrariabackend.model.Customer;
 import com.tqi.evolutionfullstack.livrariabackend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,23 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService {
     @Autowired
-    private CustomerRepository repository;
+    private CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository repository) {
-        this.repository = repository;
-    }
+    public void save(Customer customer) {
+        Customer objCustomer = new Customer();
+        objCustomer.setCpf(customer.getCpf());
+        objCustomer.setName(customer.getName());
 
-    public void save(NewCustomer newCustomer) {
-        Customer customer = new Customer();
-        //customer.setId(0L);
-        customer.setCpf(newCustomer.getCpf());
-        customer.setName(newCustomer.getName());
-
-//        Conta conta = new Conta();
-//        conta.setSaldo(0.0);
-//        conta.setNumero(new Date().getTime());
-
-//        correntista.setConta(conta);
-        repository.save(customer);
+        customerRepository.save(objCustomer);
     }
 }

@@ -1,26 +1,40 @@
 package com.tqi.evolutionfullstack.livrariabackend.service;
 
-import com.tqi.evolutionfullstack.livrariabackend.dto.NewBook;
 import com.tqi.evolutionfullstack.livrariabackend.model.Book;
 import com.tqi.evolutionfullstack.livrariabackend.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BookService {
     @Autowired
-    private BookRepository repository;
+    private BookRepository bookRepository;
 
-    public void save(NewBook newBook){
-        Book book = new Book();
-        book.setTitle(newBook.getTitle());
-        book.setAuthor(newBook.getAuthor());
-        book.setPublisher(newBook.getPublisher());
-        book.setImg(newBook.getImg());
-        book.setPublishedYear(newBook.getPublishedYear());
+    public void save(Book book){
+        Book objBook = new Book();
+        objBook.setTitle(book.getTitle());
+        objBook.setAuthor(book.getAuthor());
+        objBook.setPublisher(book.getPublisher());
+        objBook.setImg(book.getImg());
+        objBook.setPublishedYear(book.getPublishedYear());
+        objBook.setCostPrice(book.getCostPrice());
 
-        repository.save(book);
+        bookRepository.save(objBook);
     }
 
+    public List<Book> findall() {
+        return bookRepository.findAll();
+    }
 
+    public Book findById(Long id) {
+        Optional<Book> obj = bookRepository.findById(id);
+        if (obj.isEmpty()) {
+            System.out.println("Erro: Nao foi encontrado com esse Id.");
+            return null;
+        }
+        return obj.get();
+    }
 }

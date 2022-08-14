@@ -1,6 +1,5 @@
 package com.tqi.evolutionfullstack.livrariabackend.controller;
 
-import com.tqi.evolutionfullstack.livrariabackend.dto.NewCustomer;
 import com.tqi.evolutionfullstack.livrariabackend.model.Customer;
 import com.tqi.evolutionfullstack.livrariabackend.repository.CustomerRepository;
 import com.tqi.evolutionfullstack.livrariabackend.service.CustomerService;
@@ -36,8 +35,7 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void createCustomer(@RequestBody NewCustomer newCustomer) {
-        Customer customer = repository.save(new Customer(newCustomer.getName(), newCustomer.getCpf()));
-
+    public void createCustomer(@RequestBody Customer customer) {
+        Customer objCustomer = repository.save(new Customer(customer.getId(), customer.getName(), customer.getCpf()));
     }
 }

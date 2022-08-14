@@ -1,10 +1,10 @@
 package com.tqi.evolutionfullstack.livrariabackend.controller;
 
-import com.tqi.evolutionfullstack.livrariabackend.dto.NewBook;
 import com.tqi.evolutionfullstack.livrariabackend.model.Book;
 import com.tqi.evolutionfullstack.livrariabackend.repository.BookRepository;
 import com.tqi.evolutionfullstack.livrariabackend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +18,12 @@ public class BookController {
     BookService service;
 
     @GetMapping
-    public List<Book> findAll() { return repository.findAll();}
+    public ResponseEntity<List<Book>> findAll() {
+        List<Book> list = service.findall();
+        return ResponseEntity.ok().body(list);
+    }
     @PostMapping
-    public void save(@RequestBody NewBook newBook) {
-        service.save(newBook);
+    public void save(@RequestBody Book book) {
+        service.save(book);
     }
 }

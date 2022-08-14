@@ -1,25 +1,21 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
 import javax.persistence.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-@Table(name = "tab_customer_order")
-public class CustomerOrder {
+@Table(name = "tbl_customer_order")
+public class CustomerOrder implements Serializable {
+
+        private static final long serialVersionUID = 1L;
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
-
-        @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "customerId", nullable = false)
-        private Customer customer;
-        @Column
-        private Long    bookId;
-        @Column
         private Integer amount;
-        @Column
         private Double  price;
+
+
 
         public Long getId() {
                 return id;
@@ -29,21 +25,6 @@ public class CustomerOrder {
                 this.id = id;
         }
 
-        public Customer getCustomer() {
-                return customer;
-        }
-
-        public void setCustomer(Customer customer) {
-                this.customer = customer;
-        }
-
-        public Long getBookId() {
-                return bookId;
-        }
-
-        public void setBookId(Long bookId) {
-                this.bookId = bookId;
-        }
 
         public Integer getAmount() {
                 return amount;
@@ -59,5 +40,18 @@ public class CustomerOrder {
 
         public void setPrice(Double price) {
                 this.price = price;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                CustomerOrder that = (CustomerOrder) o;
+                return Objects.equals(id, that.id);
+        }
+
+        @Override
+        public int hashCode() {
+                return Objects.hash(id);
         }
 }
