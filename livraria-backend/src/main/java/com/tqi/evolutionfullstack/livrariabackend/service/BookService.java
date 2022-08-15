@@ -16,6 +16,11 @@ public class BookService {
     public void save(Book book){
         Book objBook = new Book();
 
+        String title = book.getTitle();
+        if (this.verifyIfIsAlreadyRegistered(title)){
+
+            return;
+        }
         objBook.setTitle(book.getTitle());
         objBook.setAuthor(book.getAuthor());
         objBook.setPublisher(book.getPublisher());
@@ -23,6 +28,8 @@ public class BookService {
         objBook.setPublishedYear(book.getPublishedYear());
         objBook.setCostPrice(book.getCostPrice());
         objBook.setSellPrice((book.getSellPrice()));
+
+
 
         bookRepository.save(objBook);
     }
@@ -39,4 +46,15 @@ public class BookService {
         }
         return obj.get();
     }
+
+    private boolean verifyIfIsAlreadyRegistered(String title) {
+        Optional<Book> optSaveBook = bookRepository.findByTitle(title);
+        if (optSaveBook.isPresent()) {
+            System.out.println("ja existe!");
+            return true;
+        }
+        return false;
+    }
+
+
 }

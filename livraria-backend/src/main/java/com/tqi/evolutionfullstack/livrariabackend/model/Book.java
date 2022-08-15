@@ -1,13 +1,8 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Entity
 @Table(name = "tbl_book")
@@ -31,14 +26,6 @@ public class Book implements Serializable {
     private Double costPrice;
     @Column
     private Double sellPrice;
-
-//    @OneToMany(mappedBy = "books", cascade = CascadeType.ALL)
-//    @JsonIgnore
-//    private List<Order> orders = new ArrayList<>();
-
-//    public List<Order> getOrders() {
-//        return orders;
-//    }
 
     public Long getId() {
         return id;
