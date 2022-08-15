@@ -1,10 +1,13 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 @Table(name = "tbl_book")
@@ -25,10 +28,17 @@ public class Book implements Serializable {
     @Column
     private Integer publishedYear;
     @Column
-    private Long costPrice;
+    private Double costPrice;
+    @Column
+    private Double sellPrice;
 
-    @OneToMany(mappedBy = "books", cascade = CascadeType.ALL)
-    private List<BookstoreOrder> bookstoreOrders = new ArrayList<>();
+//    @OneToMany(mappedBy = "books", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private List<Order> orders = new ArrayList<>();
+
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
 
     public Long getId() {
         return id;
@@ -78,20 +88,20 @@ public class Book implements Serializable {
         this.publishedYear = publishedYear;
     }
 
-    public Long getCostPrice() {
+    public Double getCostPrice() {
         return costPrice;
     }
 
-    public void setCostPrice(Long costPrice) {
+    public void setCostPrice(Double costPrice) {
         this.costPrice = costPrice;
     }
 
-    public List<BookstoreOrder> getBookstoreOrders() {
-        return bookstoreOrders;
+    public Double getSellPrice() {
+        return sellPrice;
     }
 
-    public void setBookstoreOrders(List<BookstoreOrder> bookstoreOrders) {
-        this.bookstoreOrders = bookstoreOrders;
+    public void setSellPrice(Double sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
     @Override

@@ -15,12 +15,14 @@ public class BookService {
 
     public void save(Book book){
         Book objBook = new Book();
+
         objBook.setTitle(book.getTitle());
         objBook.setAuthor(book.getAuthor());
         objBook.setPublisher(book.getPublisher());
         objBook.setImg(book.getImg());
         objBook.setPublishedYear(book.getPublishedYear());
         objBook.setCostPrice(book.getCostPrice());
+        objBook.setSellPrice((book.getSellPrice()));
 
         bookRepository.save(objBook);
     }

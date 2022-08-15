@@ -16,13 +16,13 @@ public class StartApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Book book = new Book();
-//        book.setTitle("Livro dois");
-//        book.setAuthor("Autor dois");
-//        book.setPublisher("Editora dois");
-//        book.setImg("imagem url");
-//        book.setPublishedYear(2000);
-//        book.setCostPrice(BigDecimal.valueOf(20.90));
-//        bookRepository.save(book);
+//        Book objBook = new Book();
+//        objBook.setTitle("Livro dois");
+//        objBook.setAuthor("Autor dois");
+//        objBook.setPublisher("Editora dois");
+//        objBook.setImg("imagem url");
+//        objBook.setPublishedYear(2000);
+//        objBook.setCostPrice((long) 20.50);
+//        bookRepository.save(objBook);
     }
 }
