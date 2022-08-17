@@ -4,9 +4,12 @@ import com.tqi.evolutionfullstack.livrariabackend.model.Customer;
 import com.tqi.evolutionfullstack.livrariabackend.repository.CustomerRepository;
 import com.tqi.evolutionfullstack.livrariabackend.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
@@ -35,6 +38,7 @@ public class CustomerController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
+    @CrossOrigin(origins = "http://localhost:8080")
     public void createCustomer(@RequestBody Customer customer) {
         Customer objCustomer = repository.save(new Customer(customer.getId(), customer.getName(), customer.getCpf()));
     }
