@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private Integer amount;
@@ -26,7 +26,7 @@ public class Order {
 //    @JoinColumn(name = "customer_id")
 //    private Customer customer;
 
-    private Long bookId;
+    private Book book;
 
     public Long getId() {
         return id;
@@ -73,12 +73,8 @@ public class Order {
 //    }
 
 
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public Book getBook() {
+        return book;
     }
 
     @Override

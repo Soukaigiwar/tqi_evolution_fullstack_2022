@@ -17,10 +17,8 @@ public class BookService {
         Book objBook = new Book();
 
         String title = book.getTitle();
-        if (this.verifyIfIsAlreadyRegistered(title)){
-
+        if (this.verifyIfIsAlreadyRegistered(title))
             return;
-        }
         objBook.setTitle(book.getTitle());
         objBook.setAuthor(book.getAuthor());
         objBook.setPublisher(book.getPublisher());

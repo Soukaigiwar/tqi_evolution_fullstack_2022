@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.tqi.evolutionfullstack.livrariabackend.enums.OrderTypeEnum.*;
 
@@ -16,16 +17,19 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+
     @Autowired
     private BookRepository bookRepository;
-    @Autowired
-    private BookService bookService;
 
-    public List<Order> findall() { return orderRepository.findAll(); }
+    public List<Order> findAll() { return orderRepository.findAll(); }
+
     public void save(Order order) {
         Order objOrder = new Order();
-        Book objBook = new Book();
 
+        Optional<Book> objBook = bookRepository.findById(order.getBook().getId());
+        if (objBook.isPresent()){
+            System.out.println("tem livro");
+        }
         objOrder.setOrderType(order.getOrderType());
         objOrder.setAmount(order.getAmount());
         if(order.getOrderType().equals(BUY)) {
@@ -34,10 +38,9 @@ public class OrderService {
         }
         else if (order.getOrderType().equals(SELL))
             objOrder.setSellPrice(order.getSellPrice());
-        objOrder.setBookId(order.getBookId());
+        objOrder.setId(order.getBook().getId());
 
         orderRepository.save(objOrder);
     }
-
 
 }
