@@ -2,6 +2,7 @@ package com.tqi.evolutionfullstack.livrariabackend.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,7 @@ public class BookStock implements Serializable {
     private Long id;
 
     @Column
-    private Long bookId;
+    private List bookId;
 
     @Column
     private Double costPrice;
@@ -28,18 +29,18 @@ public class BookStock implements Serializable {
     public BookStock() {
     }
 
-    public BookStock(Long bookId, Double costPrice, Double sellPrice, Integer quantity) {
+    public BookStock(List bookId, Double costPrice, Double sellPrice, Integer quantity) {
         this.bookId = bookId;
         this.costPrice = costPrice;
         this.sellPrice = sellPrice;
         this.quantity = quantity;
     }
 
-    public Long getBookId() {
+    public List getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(List bookId) {
         this.bookId = bookId;
     }
 
