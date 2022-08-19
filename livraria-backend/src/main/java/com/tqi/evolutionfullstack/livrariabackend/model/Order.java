@@ -1,7 +1,6 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tqi.evolutionfullstack.livrariabackend.enums.OrderTypeEnum;
+import com.tqi.evolutionfullstack.livrariabackend.model.enums.OrderTypeEnum;
 
 import javax.persistence.*;
 import java.util.Objects;

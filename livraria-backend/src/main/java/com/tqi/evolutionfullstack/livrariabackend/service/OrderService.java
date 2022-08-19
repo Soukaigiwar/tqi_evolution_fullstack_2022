@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static com.tqi.evolutionfullstack.livrariabackend.enums.OrderTypeEnum.*;
+import static com.tqi.evolutionfullstack.livrariabackend.model.enums.OrderTypeEnum.*;
 
 @Service
 public class OrderService {
