@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Table(name = "tbl_customer")
 @Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)

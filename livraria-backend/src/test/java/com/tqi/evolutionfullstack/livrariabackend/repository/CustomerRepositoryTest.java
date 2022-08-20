@@ -23,7 +23,7 @@ public class CustomerRepositoryTest {
         Customer customer = Customer.builder().name("Sergio Mello").cpf("12312312388").build();
         customerRepository.save(customer);
 
-        boolean result = customerRepository.existsByCPF("12312312388");
+        boolean result = customerRepository.existsByCpf("12312312388").isPresent();
 
         Assertions.assertThat(result).isTrue();
     }

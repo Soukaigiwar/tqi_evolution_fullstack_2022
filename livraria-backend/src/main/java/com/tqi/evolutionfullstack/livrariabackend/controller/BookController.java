@@ -1,7 +1,7 @@
 package com.tqi.evolutionfullstack.livrariabackend.controller;
 
 import com.tqi.evolutionfullstack.livrariabackend.DTO.BookDTO;
-import com.tqi.evolutionfullstack.livrariabackend.exception.RulesException;
+import com.tqi.evolutionfullstack.livrariabackend.exception.BookstoreRulesException;
 import com.tqi.evolutionfullstack.livrariabackend.model.Book;
 import com.tqi.evolutionfullstack.livrariabackend.repository.BookRepository;
 import com.tqi.evolutionfullstack.livrariabackend.service.BookService;
@@ -18,13 +18,19 @@ import java.util.Optional;
 public class BookController {
 
     @Autowired
-    private BookRepository repository;
+    BookRepository repository;
 
     @Autowired
     BookService service;
 
-    public BookController(BookService service){
-        this.service = service;
+//    public BookController(BookService service){
+//        this.service = service;
+//    }
+
+    @GetMapping
+    public ResponseEntity<List<Book>> findAll() {
+        List<Book> list = service.findAll();
+        return ResponseEntity.ok().body(list);
     }
 
     @PostMapping
@@ -33,26 +39,26 @@ public class BookController {
             Book book = returnDTO(dto);
             book = service.SaveBook(book);
             return ResponseEntity.ok(book);
-        } catch (RulesException e) {
+        } catch (BookstoreRulesException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @PutMapping("{id")
-    public ResponseEntity updateBook(@PathVariable("id") Long id, @RequestBody BookDTO dto) {
-        return service.getBookById(id).map( entity -> {
-            try {
-                Book book = returnDTO((dto));
-                book.setId(entity.getId());
-                service.updateBook(book);
-                return ResponseEntity.ok(book);
-            } catch (RulesException e) {
-                return ResponseEntity.badRequest().body(e.getMessage());
-            }
-        }).orElseGet( () -> new ResponseEntity("Livro não encontrado.", HttpStatus.NOT_FOUND));
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity updateBook(@PathVariable("id") Long id, @RequestBody BookDTO dto) {
+//        return service.getBookById(id).map( entity -> {
+//            try {
+//                Book book = returnDTO((dto));
+//                book.setId(entity.getId());
+//                service.updateBook(book);
+//                return ResponseEntity.ok(book);
+//            } catch (RulesException e) {
+//                return ResponseEntity.badRequest().body(e.getMessage());
+//            }
+//        }).orElseGet( () -> new ResponseEntity("Livro não encontrado.", HttpStatus.NOT_FOUND));
+//    }
 
-    @DeleteMapping("{id")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteBook( @PathVariable("id") Long id) {
         return service.getBookById(id).map( entity -> {
             service.deleteBook(entity);
@@ -60,7 +66,7 @@ public class BookController {
         }).orElseGet( () -> new ResponseEntity("Livro não encontrado.", HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity listBook(@RequestParam("id") Long id ) {
         Book book = new Book();
         book.setId(id);
@@ -87,11 +93,23 @@ public class BookController {
         return book;
     }
 
+
+
+
+
+
+
+
+
+
+
+
 //    @GetMapping
 //    public ResponseEntity<List<Book>> findAll() {
-//        List<Book> list = service.findall();
+//        List<Book> list = service.findAll();
 //        return ResponseEntity.ok().body(list);
 //    }
+//
 //    @PostMapping
 //    public void save(@RequestBody Book objBook){
 //        service.save(objBook);

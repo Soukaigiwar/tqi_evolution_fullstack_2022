@@ -1,5 +1,6 @@
 package com.tqi.evolutionfullstack.livrariabackend.DTO;
 
+import com.tqi.evolutionfullstack.livrariabackend.model.Book;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,4 +16,19 @@ public class BookDTO {
     private Integer publishedYear;
     private Double costPrice;
     private Double sellPrice;
+
+//    public BookDTO() {
+//
+//    }
+
+//    public BookDTO(Book objBook) {
+//        id = objBook.getId();
+//        title = objBook.getTitle();
+//        author = objBook.getAuthor();
+//        publisher = objBook.getPublisher();
+//        img = objBook.getImg();
+//        publishedYear = objBook.getPublishedYear();
+//        costPrice = objBook.getCostPrice();
+//        sellPrice = objBook.getSellPrice();
+//    }
 }
