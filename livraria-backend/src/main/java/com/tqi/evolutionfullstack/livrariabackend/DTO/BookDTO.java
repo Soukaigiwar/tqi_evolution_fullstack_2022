@@ -16,6 +16,7 @@ public class BookDTO {
     private Integer publishedYear;
     private Double costPrice;
     private Double sellPrice;
+    private Integer quantity;
 
 //    public BookDTO() {
 //

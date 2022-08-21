@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_book_stock")
@@ -24,7 +25,7 @@ public class BookStock implements Serializable {
     private Long id;
 
     @Column
-    private BookListDTO bookId;
+    private Long bookId;
 
     @Column
     private Double costPrice;

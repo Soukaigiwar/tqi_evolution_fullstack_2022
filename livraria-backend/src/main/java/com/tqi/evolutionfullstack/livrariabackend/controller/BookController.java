@@ -89,6 +89,7 @@ public class BookController {
         book.setPublishedYear(dto.getPublishedYear());
         book.setCostPrice(dto.getCostPrice());
         book.setSellPrice(dto.getSellPrice());
+        book.setQuantity(dto.getQuantity());
 
         return book;
     }

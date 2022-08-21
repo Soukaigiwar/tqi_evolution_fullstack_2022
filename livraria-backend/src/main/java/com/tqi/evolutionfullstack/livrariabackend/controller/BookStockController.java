@@ -46,20 +46,26 @@ public class BookStockController {
         try {
             BookStock bookStock = returnDTO(dto);
             bookStock = bookStockService.save(bookStock);
-            return ResponseEntity.ok(bookStock);
+            return new ResponseEntity(bookStock, HttpStatus.CREATED);
         }  catch (BookstoreRulesException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity updateBookStock(@PathVariable("id") Long id, @RequestBody BookStockDTO dto) {
+        bookService.getBookById(id).map( entity -> {
+            BookStock bookStock = returnDTO((dto));
+            bookStock.setId(entity.getId());
+            bookStockService.save(bookStock);
+            return new ResponseEntity("Atualizado na base de dados.", HttpStatus.OK);
+        });
+        return null;
+    }
     private BookStock returnDTO(BookStockDTO dto) {
         BookStock bookStock = new BookStock();
 
-        List<Book> book = bookService
-                .getBookById(dto.getId())
-                .orElseThrow( () -> new BookstoreRulesException("Livro não encontrado."));
-
-        bookStock.setBookId(convertToList(book));
+        bookStock.setBookId(dto.getBookId());
         bookStock.setCostPrice(dto.getCostPrice());
         bookStock.setSellPrice(dto.getSellPrice());
         bookStock.setQuantity(dto.getQuantity());
@@ -67,9 +73,4 @@ public class BookStockController {
         return bookStock;
     }
 
-    public static List<BookListDTO> convertToList(List<Book> books) {
-        return books.stream().map(book -> {
-            return new BookListDTO(book.getId());
-        }).collect(Collectors.toList());
-    }
 }

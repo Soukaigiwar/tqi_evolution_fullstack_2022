@@ -35,4 +35,6 @@ public class Book implements Serializable {
     private Double costPrice;
     @Column
     private Double sellPrice;
+    @Column
+    private Integer quantity;
 }

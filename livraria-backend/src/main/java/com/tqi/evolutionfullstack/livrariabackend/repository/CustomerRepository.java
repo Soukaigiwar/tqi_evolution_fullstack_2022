@@ -9,7 +9,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 //    boolean EvaluateFields(Customer customer);
     boolean existsByName(String name);
-//
-//    List<Customer> findAll();
+
 
 }
