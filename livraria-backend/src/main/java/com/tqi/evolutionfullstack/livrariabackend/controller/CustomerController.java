@@ -38,7 +38,7 @@ public class CustomerController {
         return customerOptional.get();
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     public ResponseEntity saveCustomer(@RequestBody CustomerDTO dto) {
         try {
             Customer customer = returnDTO(dto);

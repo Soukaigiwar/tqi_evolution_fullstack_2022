@@ -23,10 +23,6 @@ public class BookController {
     @Autowired
     BookService service;
 
-//    public BookController(BookService service){
-//        this.service = service;
-//    }
-
     @GetMapping
     public ResponseEntity<List<Book>> findAll() {
         List<Book> list = service.findAll();
@@ -43,20 +39,6 @@ public class BookController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity updateBook(@PathVariable("id") Long id, @RequestBody BookDTO dto) {
-//        return service.getBookById(id).map( entity -> {
-//            try {
-//                Book book = returnDTO((dto));
-//                book.setId(entity.getId());
-//                service.updateBook(book);
-//                return ResponseEntity.ok(book);
-//            } catch (RulesException e) {
-//                return ResponseEntity.badRequest().body(e.getMessage());
-//            }
-//        }).orElseGet( () -> new ResponseEntity("Livro não encontrado.", HttpStatus.NOT_FOUND));
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteBook( @PathVariable("id") Long id) {
@@ -93,35 +75,4 @@ public class BookController {
 
         return book;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-//    @GetMapping
-//    public ResponseEntity<List<Book>> findAll() {
-//        List<Book> list = service.findAll();
-//        return ResponseEntity.ok().body(list);
-//    }
-//
-//    @PostMapping
-//    public void save(@RequestBody Book objBook){
-//        service.save(objBook);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public Book findById(@PathVariable Long id) {
-//        var bookOptional = repository.findById(id);
-//        if (bookOptional.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        }
-//        return bookOptional.get();
-//    }
 }

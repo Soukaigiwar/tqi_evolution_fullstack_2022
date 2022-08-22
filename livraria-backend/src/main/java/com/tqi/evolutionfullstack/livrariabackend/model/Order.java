@@ -1,12 +1,21 @@
 package com.tqi.evolutionfullstack.livrariabackend.model;
 
 import com.tqi.evolutionfullstack.livrariabackend.model.enums.OrderTypeEnum;
+import io.swagger.v3.oas.annotations.info.Info;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tbl_order")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     @Id
@@ -21,71 +30,5 @@ public class Order {
 
     private Double sellPrice;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
-
     private Book book;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public OrderTypeEnum getOrderType() {
-        return orderType;
-    }
-
-    public void setOrderType(OrderTypeEnum orderType) {
-        this.orderType = orderType;
-    }
-
-    public Double getCostPrice() {
-        return costPrice;
-    }
-
-    public void setCostPrice(Double costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public Double getSellPrice() {
-        return sellPrice;
-    }
-
-    public void setSellPrice(Double sellPrice) {
-        this.sellPrice = sellPrice;
-    }
-
-//    public Book getBooks() {
-//        return books;
-//    }
-
-
-    public Book getBook() {
-        return book;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(id, order.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

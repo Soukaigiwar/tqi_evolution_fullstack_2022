@@ -29,13 +29,6 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id);
     }
 
-//    @Override
-//    @Transactional
-//    public Book updateBook(Book book) {
-//        Objects.requireNonNull(book.getId());
-//        return bookRepository.save(book);
-//    }
-
     @Override
     @Transactional
     public void deleteBook(Book book) {
